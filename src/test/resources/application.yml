@@ -1,0 +1,19 @@
+spring:
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        show_sql: true  #sout으로 찍음
+#        format_sql: true
+
+logging:
+  level:
+    org.hibername.SQL: debug #logger로 찍음
+    org.hibernate.type: trace # update, delete parameter 보고 싶을때 -> dependency로도 확인 가능 방법 있음
