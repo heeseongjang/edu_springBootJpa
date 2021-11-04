@@ -84,4 +84,17 @@ public class OrderRepository {
                         " join o.delivery d", OrderSimpleQueryDto.class
         ).getResultList();
     }
+
+    public List<Order> findAllWithItem() {
+        //페이징안됨!
+        return em.createQuery(
+                "select distinct o from Order o" + //db의 distinct와 다름(엔티티의 id가 값으면 중복제거)
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i", Order.class
+        ).setFirstResult(1)
+                .setMaxResults(100) //메모리에서 페이징처리함
+                .getResultList();
+    }
 }
